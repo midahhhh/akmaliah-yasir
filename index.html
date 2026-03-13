@@ -25,15 +25,24 @@
         }
         .serif { font-family: 'Cormorant Garamond', serif; }
 
-        /* --- KEYFRAMES UNTUK ANIMASI --- */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+        /* --- ANIMASI BUNGA BERGERAK --- */
+        .flower-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 999; overflow: hidden;
+        }
+        .flower {
+            position: absolute; color: #fff; font-size: 20px;
+            opacity: 0.6; animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
         }
 
-        @keyframes shine {
-            100% { left: 125%; }
+        /* --- KEYFRAMES --- */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         /* --- COVER --- */
@@ -43,278 +52,179 @@
             z-index: 9999; display: flex; flex-direction: column;
             transition: 1.5s cubic-bezier(0.65, 0, 0.35, 1);
         }
-
         .cover-photo {
             flex: 1.2;
             background: url('GNT00589.jpg') center top/cover;
             width: 100%;
         }
-
         .cover-content {
-            flex: 1;
-            padding: 30px 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: white;
-            border-top: 5px solid var(--dusty-blue);
-        }
-
-        .btn-elegant {
-            position: relative;
-            overflow: hidden;
-            margin-top: 20px; padding: 12px 40px;
-            background: var(--deep-slate); color: white;
-            border: none; border-radius: 50px; cursor: pointer;
-            letter-spacing: 3px; font-size: 0.7rem; transition: 0.4s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        /* Efek Shine pada Tombol */
-        .btn-elegant:after {
-            content: "";
-            position: absolute;
-            top: 0; left: -75%;
-            width: 50%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 100%);
-            transform: skewX(-25deg);
-            transition: 0.75s;
-            animation: shine 3s infinite;
+            flex: 1; padding: 30px 20px; text-align: center;
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: center; background: white; border-top: 5px solid var(--dusty-blue);
         }
 
         /* --- SECTIONS --- */
-        section { padding: 60px 20px; position: relative; text-align: center; }
+        section { padding: 80px 20px; text-align: center; }
+        .couple-name { font-size: 1.8rem; color: var(--gold-accent); margin: 10px 0; }
+        .parents-name { font-size: 0.8rem; margin-bottom: 20px; opacity: 0.8; }
 
-        .photo-frame {
-            position: relative; width: 100%; max-width: 320px; margin: 0 auto;
-            animation: float 5s ease-in-out infinite; /* Animasi Melayang */
+        .btn-elegant {
+            padding: 12px 40px; background: var(--deep-slate); color: white;
+            border: none; border-radius: 50px; cursor: pointer;
+            letter-spacing: 3px; font-size: 0.7rem; transition: 0.4s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-decoration: none;
         }
 
-        .main-img {
-            width: 100%; height: auto; max-height: 450px; object-fit: cover;
-            border-radius: 160px 160px 20px 20px;
-            border: 8px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: transform 0.5s ease;
-        }
-
-        .main-img:hover {
-            transform: scale(1.02);
-        }
-
-        .gallery-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 20px;
-        }
-        .gallery-item {
-            width: 100%; height: 200px; object-fit: cover; border-radius: 15px;
-            transition: 0.5s ease;
-        }
-        
-        .gallery-item:hover {
-            transform: scale(1.05);
-            z-index: 2;
-        }
-
-        .gallery-item:nth-child(even) { margin-top: 30px; }
-
-        .story-card {
+        /* --- GALLERY & CARDS --- */
+        .story-card, .rsvp-form {
             background: white; padding: 30px 20px; border-radius: 30px;
             box-shadow: 0 10px 30px rgba(180, 199, 217, 0.2);
-            line-height: 1.8; font-size: 0.85rem; text-align: justify;
-            transition: 0.3s;
         }
-
-        .info-card {
-            background: var(--dusty-blue); color: white;
-            padding: 25px; border-radius: 20px; margin-top: 20px;
-            transition: 0.4s;
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .rsvp-form {
-            background: white; padding: 25px 20px; border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left;
-        }
-        .rsvp-form input, .rsvp-form select, .rsvp-form textarea {
-            width: 100%; padding: 12px; margin: 8px 0;
-            border: 1px solid #ddd; border-radius: 8px;
-            font-family: 'Montserrat', sans-serif; font-size: 0.85rem;
-            transition: 0.3s;
-        }
-
-        .rsvp-form input:focus { border-color: var(--dusty-blue); outline: none; }
-
-        .btn-submit {
-            width: 100%; background: var(--deep-slate); color: white;
-            padding: 12px; border: none; border-radius: 8px; cursor: pointer;
-            transition: 0.3s;
-        }
-        .btn-submit:active { transform: scale(0.98); }
-
-        .guest-item {
-            background: #fff; padding: 15px; border-radius: 12px;
-            margin-top: 15px; border-left: 4px solid var(--dusty-blue);
-            text-align: left; box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(-10px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        #guest-list { max-height: 350px; overflow-y: auto; margin-top: 20px; }
-
+        .info-card { background: var(--dusty-blue); color: white; padding: 25px; border-radius: 20px; margin-top: 20px; }
+        
         #music-toggle {
             position: fixed; bottom: 25px; right: 25px; z-index: 1000;
             background: white; border: none; width: 50px; height: 50px;
             border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
-            transition: 0.3s;
+            cursor: pointer; font-size: 1.2rem;
         }
-
-        #music-toggle:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
 
+    <div class="flower-container" id="flower-box"></div>
+
     <div id="cover">
         <div class="cover-photo"></div>
         <div class="cover-content">
-            <p class="serif" data-aos="fade-up" style="letter-spacing: 5px; font-size: 0.8rem;">THE WEDDING OF</p>
+            <p class="serif" data-aos="fade-up" style="letter-spacing: 3px;">WE ARE GETTING MARRIED</p>
             <h1 class="serif" data-aos="fade-up" data-aos-delay="300" style="font-size: 2.2rem; margin: 10px 0;">Akmaliah & Yasir</h1>
             <p data-aos="fade-up" data-aos-delay="500" style="font-size: 0.7rem; letter-spacing: 2px; color: var(--gold-accent);">05 . 04 . 2026</p>
-            <button class="btn-elegant" onclick="openInvitation()">BUKA UNDANGAN</button>
+            <button class="btn-elegant" style="margin-top: 20px;" onclick="openInvitation()">BUKA UNDANGAN</button>
         </div>
     </div>
 
-    <audio id="bgMusic" loop preload="auto">
+    <audio id="bgMusic" loop>
         <source src="sound.mp4" type="audio/mpeg">
     </audio>
     <button id="music-toggle" onclick="toggleMusic()">🎵</button>
 
-    <section>
-        <div class="photo-frame" data-aos="zoom-in">
-            <img src="GNT00616.jpg" class="main-img" alt="Mempelai">
-            <div style="position: absolute; bottom: -15px; right: -15px; background: white; padding: 12px; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                <span class="serif" style="font-size: 1.2rem;">A & Y</span>
-            </div>
+    <section data-aos="fade-up">
+        <p class="serif" style="font-style: italic; font-size: 1.1rem; margin-bottom: 20px;">Assalamu'alaikum Wr. Wb.</p>
+        <p style="font-size: 0.85rem; line-height: 1.8; max-width: 500px; margin: 0 auto 30px;">
+            "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+            <br><strong>(QS. Ar-Rum: 21)</strong>
+        </p>
+        <div style="height: 1px; background: var(--dusty-blue); width: 50px; margin: 0 auto;"></div>
+    </section>
+
+    <section style="background: #fbfcfd;">
+        <h2 class="serif" data-aos="fade-up" style="margin-bottom: 40px;">Mempelai</h2>
+        
+        <div data-aos="fade-right">
+            <h3 class="serif couple-name">Akmaliah</h3>
+            <p class="parents-name">Putri dari Bapak Fulan & Ibu Fulanah</p>
         </div>
+
+        <div class="serif" data-aos="zoom-in" style="font-size: 2rem; margin: 20px 0; color: var(--dusty-blue);">&</div>
+
+        <div data-aos="fade-left">
+            <h3 class="serif couple-name">M. Yasir Denhaz</h3>
+            <p class="parents-name">Putra dari Bapak Fulan & Ibu Fulanah</p>
+        </div>
+        
+        <p style="margin-top: 40px; font-size: 0.85rem; font-style: italic;">
+            Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. <br>
+            Ya Allah semoga ridho-Mu tercurah mengiringi pernikahan kami.
+        </p>
     </section>
 
     <section style="background: #f0f4f8;">
         <h2 class="serif" data-aos="fade-right" style="font-size: 2.2rem; margin-bottom: 25px;">Our Journey</h2>
         <div class="story-card" data-aos="fade-up">
             <p class="serif" style="font-size: 1.1rem; color: var(--gold-accent); margin-bottom: 10px;">Takdir yang Bertemu</p>
-            <p>Dimulai dari sebuah pertemuan tak terduga yang sederhana, kami menemukan kenyamanan yang luar biasa. Bukan tentang seberapa lama kami saling mengenal, tapi tentang seberapa dalam kami saling memahami. Lewat tawa yang dibagikan dan air mata yang saling menguatkan, kami menyadari bahwa rumah bukanlah sebuah tempat, melainkan satu sama lain. Kini, kami siap melangkah ke babak baru untuk selamanya.</p>
-            <br>
-            <p>Berawal dari sebuah tatapan yang tak sengaja tertambat di depan teras rumah saudara, takdir mulai membisikkan nama Amal dan Yasir dalam satu melodi yang indah. Kini, debaran itu telah bertransformasi menjadi janji setia, di mana kami memilih satu sama lain sebagai tempat terakhir untuk pulang.</p>
-        </div>
-    </section>
-
-    <section>
-        <h2 class="serif" data-aos="fade-up" style="font-size: 2.2rem; margin-bottom: 30px;">Our Gallery</h2>
-        <div class="gallery-grid">
-            <img src="01.jpg" class="gallery-item" data-aos="flip-left">
-            <img src="02.jpg" class="gallery-item" data-aos="flip-right" data-aos-delay="200">
-            <img src="03.jpg" class="gallery-item" data-aos="flip-left" data-aos-delay="400">
-            <img src="04.jpg" class="gallery-item" data-aos="flip-right" data-aos-delay="600">
+            <p style="text-align: justify; font-size: 0.85rem; line-height: 1.8;">Berawal dari sebuah tatapan yang tak sengaja tertambat di depan teras rumah saudara, takdir mulai membisikkan nama Amal dan Yasir dalam satu melodi yang indah. Kini, debaran itu telah bertransformasi menjadi janji setia, di mana kami memilih satu sama lain sebagai tempat terakhir untuk pulang.</p>
         </div>
     </section>
 
     <section style="background: var(--deep-slate); color: white;">
         <h2 class="serif" data-aos="fade-up" style="font-size: 2.2rem;">Save The Date</h2>
         <div class="info-card" style="background: rgba(255,255,255,0.1);" data-aos="zoom-in">
-            <h3 class="serif">05 April 2026</h3>
+            <h3 class="serif">Ahad, 05 April 2026</h3>
             <p>09:00 WIB - Selesai</p>
             <div style="margin: 15px 0; height: 1px; background: rgba(255,255,255,0.2);"></div>
             <p style="font-size: 0.85rem;">Kp. Pager Jangkung RT 003/006, Desa Situ Ilir, Cibungbulang, Bogor</p>
         </div>
-        <a href="https://maps.google.com" target="_blank" class="btn-elegant" style="background: white; color: var(--deep-slate); text-decoration: none; display: inline-block;">LIHAT MAPS</a>
+        <br>
+        <a href="https://maps.google.com" target="_blank" class="btn-elegant" style="background: white; color: var(--deep-slate); display: inline-block;">LIHAT MAPS</a>
     </section>
 
     <section>
-        <h2 class="serif" data-aos="fade-up" style="font-size: 2.2rem; margin-bottom: 20px;">Tanda Kasih</h2>
-        <div class="info-card" data-aos="flip-up">
-            <p>BSI - 7254432851</p>
-            <p style="font-size: 0.8rem;">a.n Akmaliah</p>
-            <button onclick="copyNum('7254432851')" style="background: white; border: none; padding: 5px 15px; border-radius: 5px; margin-top: 10px; cursor: pointer; font-size: 0.75rem;">Salin</button>
-        </div>
-        <div class="info-card" data-aos="flip-up" data-aos-delay="200">
-            <p>BRI - 12570100692750</p>
-            <p style="font-size: 0.8rem;">a.n M. Yasir Denhaz</p>
-            <button onclick="copyNum('12570100692750')" style="background: white; border: none; padding: 5px 15px; border-radius: 5px; margin-top: 10px; cursor: pointer; font-size: 0.75rem;">Salin</button>
-        </div>
-    </section>
-
-    <section style="background: #f9f9f9;">
-        <h2 class="serif" data-aos="fade-up" style="font-size: 2rem; margin-bottom: 10px;">Buku Tamu</h2>
+        <h2 class="serif" data-aos="fade-up" style="font-size: 2rem; margin-bottom: 20px;">Buku Tamu</h2>
         <div class="rsvp-form" data-aos="fade-up">
             <form id="rsvp-form">
-                <input type="text" id="guest-name" placeholder="Nama Lengkap" required>
-                <select id="guest-status" required>
+                <input type="text" id="guest-name" placeholder="Nama Lengkap" style="width:100%; padding:12px; margin-bottom:10px; border:1px solid #ddd; border-radius:8px;" required>
+                <select id="guest-status" style="width:100%; padding:12px; margin-bottom:10px; border:1px solid #ddd; border-radius:8px;" required>
                     <option value="" disabled selected>Konfirmasi Kehadiran</option>
                     <option value="Hadir">Hadir</option>
                     <option value="Berhalangan">Berhalangan</option>
                 </select>
-                <textarea id="guest-wish" rows="3" placeholder="Tulis ucapan & doa..." required></textarea>
-                <button type="submit" class="btn-submit">Kirim Ucapan</button>
+                <textarea id="guest-wish" rows="3" placeholder="Tulis ucapan & doa..." style="width:100%; padding:12px; margin-bottom:10px; border:1px solid #ddd; border-radius:8px;" required></textarea>
+                <button type="submit" class="btn-submit" style="width:100%; padding:12px; background:var(--deep-slate); color:white; border:none; border-radius:8px; cursor:pointer;">Kirim Ucapan</button>
             </form>
         </div>
-        <div id="guest-list"></div>
+        <div id="guest-list" style="margin-top: 20px; text-align: left;"></div>
     </section>
 
     <footer style="padding: 40px 20px; background: #e2e8f0; font-size: 0.75rem; text-align: center;">
         <p class="serif" style="font-size: 1.3rem;">Akmaliah & Yasir</p>
-        <p>05.04.2026</p>
+        <p>Created with Love</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
 
+        // Animasi Bunga
+        const flowerContainer = document.getElementById('flower-box');
+        const flowers = ['🌸', '🍃', '✨', '🤍'];
+        
+        function createFlower() {
+            const f = document.createElement('div');
+            f.className = 'flower';
+            f.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+            f.style.left = Math.random() * 100 + 'vw';
+            f.style.animationDuration = Math.random() * 3 + 2 + 's';
+            flowerContainer.appendChild(f);
+            setTimeout(() => f.remove(), 5000);
+        }
+        setInterval(createFlower, 500);
+
         const audio = document.getElementById('bgMusic');
         const musicBtn = document.getElementById('music-toggle');
 
         function openInvitation() {
             document.getElementById('cover').style.transform = 'translateY(-100%)';
-            audio.currentTime = 78; 
             audio.play();
             musicBtn.innerText = "⏸️";
         }
 
         function toggleMusic() {
-            if (audio.paused) {
-                audio.play();
-                musicBtn.innerText = "⏸️";
-            } else {
-                audio.pause();
-                musicBtn.innerText = "🎵";
-            }
+            if (audio.paused) { audio.play(); musicBtn.innerText = "⏸️"; }
+            else { audio.pause(); musicBtn.innerText = "🎵"; }
         }
 
-        function copyNum(text) {
-            navigator.clipboard.writeText(text);
-            alert("Nomor rekening berhasil disalin!");
-        }
-
+        // RSVP Logic
         const rsvpForm = document.getElementById('rsvp-form');
-        const guestList = document.getElementById('guest-list');
         rsvpForm.onsubmit = function(e) {
             e.preventDefault();
             const name = document.getElementById('guest-name').value;
-            const status = document.getElementById('guest-status').value;
             const wish = document.getElementById('guest-wish').value;
-
-            const entry = document.createElement('div');
-            entry.className = 'guest-item';
-            entry.innerHTML = `<h4>${name}</h4><small>${status}</small><p>"${wish}"</p>`;
-            guestList.prepend(entry);
+            const list = document.getElementById('guest-list');
+            const div = document.createElement('div');
+            div.style = "background:white; padding:15px; border-radius:10px; margin-bottom:10px; border-left:4px solid var(--dusty-blue); box-shadow: 0 2px 5px rgba(0,0,0,0.05)";
+            div.innerHTML = `<strong>${name}</strong><p style="font-size:0.8rem; margin-top:5px;">${wish}</p>`;
+            list.prepend(div);
             rsvpForm.reset();
         }
     </script>
