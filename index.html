@@ -72,7 +72,7 @@
 
         .couple-img-main {
             width: 100%; max-width: 400px; border-radius: 200px 200px 20px 20px;
-            margin-bottom: 30px; border: 8px solid white; box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 30px; border: 10px solid white; box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
         /* --- STORY SECTION --- */
@@ -132,22 +132,21 @@
             display: none;
         }
 
-        /* =========================================
-           FIX TAMPILAN MOBILE (PENTING)
-        ========================================= */
-        @media (max-width: 480px) {
+        /* --- MEDIA QUERY MOBILE FIX --- */
+        @media (max-width: 600px) {
             #cover h1 { font-size: 3rem; }
-            .script { font-size: 2.4rem !important; }
+            .script { font-size: 2.5rem !important; }
             section { padding: 40px 15px; }
             .card { padding: 20px; border-radius: 15px; }
-            .couple-img-main { max-width: 85%; }
+            .couple-img-main { max-width: 280px; }
             .gallery-grid { gap: 8px; }
-            .gallery-item-wrapper { height: 150px; border-width: 3px; }
+            .gallery-item-wrapper { height: 150px; }
             .countdown-item { min-width: 55px; padding: 6px; }
-            .countdown-item div { font-size: 1rem; }
+            .countdown-item div { font-size: 1.1rem; }
             .countdown-item small { font-size: 0.6rem; }
-            .story-line { padding: 15px; margin-left: 10px; }
+            .story-line { padding: 15px; margin: 15px auto; }
             h3.serif { font-size: 1.8rem !important; }
+            p { font-size: 0.85rem !important; }
         }
     </style>
 </head>
@@ -158,11 +157,13 @@
     <div id="cover">
         <div class="serif" style="letter-spacing: 3px; margin-bottom: 10px; font-size: 0.8rem;">WEDDING INVITATION</div>
         <h1 class="script">Akmaliah & Yasir</h1>
+        
         <div style="margin: 20px 0; text-align: center;">
             <p style="font-size: 0.75rem; opacity: 0.9;">Kepada Yth. Bapak/Ibu/Saudara/i</p>
-            <h3 id="guest-name" style="margin-top: 5px; border-bottom: 1px solid white; display: inline-block; padding: 0 10px; font-weight: 300; font-size: 1.1rem;">Tamu Undangan</h3>
+            <h3 id="guest-name" style="margin-top: 10px; border-bottom: 1px solid white; display: inline-block; padding: 0 15px; font-weight: 300;">Tamu Undangan</h3>
         </div>
-        <button class="btn-action" style="background: white; color: black; width: auto; padding: 10px 30px;" onclick="startInvitation()">BUKA UNDANGAN</button>
+
+        <button class="btn-action" style="background: white; color: black; width: auto;" onclick="startInvitation()">BUKA UNDANGAN</button>
     </div>
 
     <audio id="bgMusic" loop>
@@ -172,62 +173,60 @@
 
     <section>
         <img src="GNT00616.jpg" class="couple-img-main" data-aos="zoom-in" alt="Foto Utama">
-        <p class="serif" data-aos="fade-up" style="font-size: 0.9rem;">Assalamu'alaikum Wr. Wb.</p>
-        <div style="width: 40px; height: 1px; background: var(--gold); margin: 15px auto;"></div>
-        <p class="serif" style="font-style: italic; font-size: 1rem; line-height: 1.6; color: var(--gold); padding: 0 10px;" data-aos="fade-up">
+        <p class="serif" data-aos="fade-up">Assalamu'alaikum Wr. Wb.</p>
+        <div style="width: 50px; height: 1px; background: var(--gold); margin: 15px auto;"></div>
+        <p style="font-style: italic; font-size: 1rem; line-height: 1.8; color: var(--gold);" data-aos="fade-up">
             "Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri..."
         </p>
-        <p style="font-weight: bold; margin-top: 10px; font-size: 0.8rem;">(QS. Ar-Rum: 21)</p>
+        <p style="font-weight: bold; margin-top: 15px;">(QS. Ar-Rum: 21)</p>
     </section>
 
     <section>
-        <h2 class="script" style="font-size: 3rem; color: var(--gold);" data-aos="fade-down">The Happy Couple</h2>
-        <div class="card" data-aos="fade-up">
-            <img src="GNT00603.JPG" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid var(--gold); padding: 4px; margin-bottom: 15px;">
-            <h3 class="serif" style="font-size: 2rem;">Akmaliah</h3>
-            <p style="font-size: 0.75rem; color: var(--gold);">Putri Pertama dari Bapak Ahmad Yusuf & Ibu Sri Wahyuni</p>
+        <h2 class="script" style="font-size: 3.5rem; color: var(--gold);" data-aos="fade-down">The Happy Couple</h2>
+        <div class="card" data-aos="fade-right">
+            <img src="GNT00603.JPG" style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; border: 3px solid var(--gold); padding: 5px; margin-bottom: 15px;">
+            <h3 class="serif" style="font-size: 2.2rem; color: var(--dark-grey);">Akmaliah</h3>
+            <p style="font-size: 0.8rem; color: var(--gold);">Putri Pertama dari Bapak Ahmad Yusuf & Ibu Sri Wahyuni</p>
         </div>
-        <div class="script" style="font-size: 2.5rem; margin: -10px 0 15px;">&</div>
-        <div class="card" data-aos="fade-up">
-            <img src="GNT00606.JPG" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 3px solid var(--gold); padding: 4px; margin-bottom: 15px;">
-            <h3 class="serif" style="font-size: 2rem;">M. Yasir Denhaz</h3>
-            <p style="font-size: 0.75rem; color: var(--gold);">Putra Pertama dari Bapak Koharudin & Ibu Kasriah</p>
+        <div class="script" style="font-size: 3rem; margin: 10px 0;">&</div>
+        <div class="card" data-aos="fade-left">
+            <img src="GNT00606.JPG" style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; border: 3px solid var(--gold); padding: 5px; margin-bottom: 15px;">
+            <h3 class="serif" style="font-size: 2.2rem; color: var(--dark-grey);">M. Yasir Denhaz</h3>
+            <p style="font-size: 0.8rem; color: var(--gold);">Putra Pertama dari Bapak Koharudin & Ibu Kasriah</p>
         </div>
     </section>
 
-    <section style="background: white; border-radius: 40px 40px 0 0;">
-        <h2 class="script" style="font-size: 2.8rem; color: var(--gold);" data-aos="fade-up">Our Love Story</h2>
+    <section style="background: white; border-radius: 50px 50px 0 0;">
+        <h2 class="script" style="font-size: 3rem; color: var(--gold);" data-aos="fade-up">Our Love Story</h2>
         <div class="story-line" data-aos="fade-right">
-            <h4 class="serif" style="font-size: 1rem; color: var(--gold);">PERTAMA BERTEMU</h4>
-            <p style="font-size: 0.8rem; margin-top: 5px;">Dimulai dari sebuah pertemuan tak terduga, kami menemukan kenyamanan yang luar biasa. Kami menyadari bahwa rumah bukanlah sebuah tempat, melainkan satu sama lain.</p>
+            <h4 class="serif">PERTAMA BERTEMU</h4>
+            <p style="font-size: 0.85rem;">Dimulai dari sebuah pertemuan tak terduga yang sederhana, kami menemukan kenyamanan yang luar biasa. Kini, kami siap melangkah ke babak baru untuk selamanya.</p>
         </div>
         <div class="story-line" data-aos="fade-right" data-aos-delay="200">
-            <h4 class="serif" style="font-size: 1rem; color: var(--gold);">MENUJU JANJI SUCI</h4>
-            <p style="font-size: 0.8rem; margin-top: 5px;">Kini, debaran yang bermula dari tatapan sederhana itu telah bertransformasi menjadi janji setia untuk melabuhkan seluruh sisa usia bersama.</p>
+            <h4 class="serif">MENUJU JANJI SUCI</h4>
+            <p style="font-size: 0.85rem;">Berawal dari sebuah tatapan di depan teras rumah saudara, kini debaran itu telah bertransformasi menjadi janji setia dalam ikatan suci pernikahan.</p>
         </div>
     </section>
 
     <section style="background: #f4f1ea;">
-        <h2 class="serif" style="letter-spacing: 3px; font-size: 1.2rem;">WAKTU ACARA</h2>
+        <h2 class="serif" style="letter-spacing: 3px; margin-bottom: 20px;">WAKTU ACARA</h2>
         <div class="countdown-container" id="countdown">
             <div class="countdown-item"><div id="days">0</div><small>Hari</small></div>
             <div class="countdown-item"><div id="hours">0</div><small>Jam</small></div>
             <div class="countdown-item"><div id="minutes">0</div><small>Menit</small></div>
             <div class="countdown-item"><div id="seconds">0</div><small>Detik</small></div>
         </div>
-        <div class="card" data-aos="zoom-in">
-            <p style="font-weight: bold; font-size: 0.9rem;">Minggu, 05 April 2026</p>
-            <p style="font-size: 0.8rem; margin-bottom: 15px;">Kp. Pager Jangkung RT 003/006, Desa Situ Ilir, Bogor</p>
+        <div class="card" data-aos="fade-up">
+            <p><strong>Minggu, 05 April 2026</strong><br>Kp. Pager Jangkung RT 003/006, Desa Situ Ilir, Bogor</p>
             <hr style="margin: 15px 0; opacity: 0.1;">
-            <p style="font-size: 0.85rem;"><strong>AKAD:</strong> 08:00 - Selesai</p>
-            <p style="font-size: 0.85rem; margin-top: 5px;"><strong>RESEPSI:</strong> 09:00 - Selesai</p>
+            <p><strong>AKAD:</strong> 09:00 - Selesai WIB<br><strong>RESEPSI:</strong> 10:00 WIB - Selesai</p>
             <br>
-            <a href="https://maps.app.goo.gl/3Xp5Y" target="_blank" class="btn-action" style="width: auto; padding: 10px 30px;">LIHAT LOKASI</a>
+            <a href="https://maps.app.goo.gl/3Xp5Y" target="_blank" class="btn-action" style="width: auto; padding: 12px 40px;">LIHAT LOKASI</a>
         </div>
     </section>
 
     <section>
-        <h2 class="script" style="font-size: 3rem; color: var(--gold);" data-aos="fade-down">Our Moments</h2>
+        <h2 class="script" style="font-size: 3.5rem; color: var(--gold);" data-aos="fade-down">Our Moments</h2>
         <div class="gallery-grid">
             <div class="gallery-item-wrapper"><img src="01.jpg"><img src="GNT00628.JPG"></div>
             <div class="gallery-item-wrapper"><img src="GNT00545.JPG"><img src="GNT00630.JPG"></div>
@@ -236,25 +235,16 @@
             <div class="gallery-item-wrapper"><img src="GNT00589.jpg"><img src="GNT00623.JPG"></div>
             <div class="gallery-item-wrapper"><img src="GNT00594.JPG"><img src="04.jpg"></div>
         </div>
-        <p style="font-size: 0.6rem; margin-top: 10px; opacity: 0.5;">*Sentuh foto untuk momen lainnya</p>
     </section>
 
     <section style="background: #eceff1;">
-        <h2 class="serif" style="font-size: 1.2rem;">WEDDING GIFT</h2>
-        <div class="card" data-aos="fade-up">
-            <p style="font-size: 0.85rem;"><strong>BSI - 7254432851</strong></p>
-            <p style="font-size: 0.75rem;">a.n Akmaliah</p>
-            <button class="btn-action" style="margin-top: 10px; width: auto; padding: 8px 20px;" onclick="copyText('7254432851')">SALIN</button>
-        </div>
-        <div class="card" data-aos="fade-up">
-            <p style="font-size: 0.85rem;"><strong>BRI - 12570100692750</strong></p>
-            <p style="font-size: 0.75rem;">a.n M. Yasir Denhaz</p>
-            <button class="btn-action" style="margin-top: 10px; width: auto; padding: 8px 20px;" onclick="copyText('12570100692750')">SALIN</button>
-        </div>
+        <h2 class="serif" style="letter-spacing: 2px;">WEDDING GIFT</h2>
+        <div class="card" data-aos="flip-up"><p><strong>BSI - 7254432851</strong><br>a.n Akmaliah</p><button class="btn-action" onclick="copyText('7254432851')" style="margin-top:10px;">SALIN REK</button></div>
+        <div class="card" data-aos="flip-up"><p><strong>BRI - 125701006927503</strong><br>a.n M. Yasir Denhaz</p><button class="btn-action" onclick="copyText('12570100692750')" style="margin-top:10px;">SALIN REK</button></div>
     </section>
 
     <section>
-        <h2 class="serif" style="font-size: 1.2rem;">RSVP & UCAPAN</h2>
+        <h2 class="serif" style="letter-spacing: 2px;">RSVP & UCAPAN</h2>
         <div class="card rsvp-form">
             <form id="formRSVP">
                 <input type="text" id="inputNama" placeholder="Nama Lengkap" required>
@@ -262,36 +252,46 @@
                     <option value="Hadir">Hadir</option>
                     <option value="Berhalangan">Berhalangan</option>
                 </select>
-                <textarea id="inputPesan" rows="3" placeholder="Tulis ucapan..." required></textarea>
-                <button type="submit" class="btn-action">KIRIM</button>
+                <textarea id="inputPesan" rows="4" placeholder="Tulis ucapan..." required></textarea>
+                <button type="submit" class="btn-action">KIRIM UCAPAN</button>
             </form>
             <div class="guest-book" id="guestBook"></div>
         </div>
     </section>
 
-    <footer style="padding: 40px; background: var(--dark-grey); color: white;">
-        <p class="script" style="font-size: 2rem;">Terima Kasih</p>
-        <p class="serif" style="font-size: 0.7rem; letter-spacing: 2px;">AKMALIAH & YASIR</p>
+    <footer style="padding: 60px 20px; background: var(--dark-grey); color: white;">
+        <p class="script" style="font-size: 2.5rem;">Terima Kasih</p>
+        <p class="serif" style="letter-spacing: 3px;">AKMALIAH & YASIR</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        AOS.init({ duration: 1000, once: true });
+
+        // AMBIL NAMA DARI URL (?to=Nama Tamu)
+        const urlParams = new URLSearchParams(window.location.search);
+        const namaTamu = urlParams.get('to');
+        if (namaTamu) {
+            document.getElementById('guest-name').innerText = namaTamu;
+            document.getElementById('inputNama').value = namaTamu; // Otomatis isi nama di RSVP
+        }
+
+        const audio = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('music-toggle');
 
         function startInvitation() {
             document.getElementById('cover').style.transform = 'translateY(-100%)';
-            document.getElementById('bgMusic').play();
-            document.getElementById('music-toggle').style.display = 'block';
+            audio.play();
+            musicBtn.style.display = 'block';
         }
 
         function toggleMusic() {
-            const m = document.getElementById('bgMusic');
-            if (m.paused) { m.play(); document.getElementById('music-toggle').innerText = "⏸️"; } 
-            else { m.pause(); document.getElementById('music-toggle').innerText = "🎵"; }
+            if (audio.paused) { audio.play(); musicBtn.innerText = "⏸️"; } 
+            else { audio.pause(); musicBtn.innerText = "🎵"; }
         }
 
-        function copyText(t) {
-            navigator.clipboard.writeText(t);
+        function copyText(text) {
+            navigator.clipboard.writeText(text);
             alert("Berhasil disalin!");
         }
 
@@ -300,7 +300,7 @@
             document.getElementById('guestBook').innerHTML = savedData.map(item => `
                 <div class="guest-item">
                     <strong>${item.nama}</strong> <small>(${item.status})</small>
-                    <p style="font-size:0.8rem; margin-top:4px;">${item.pesan}</p>
+                    <p>${item.pesan}</p>
                 </div>
             `).join('');
         }
@@ -323,7 +323,8 @@
 
         const target = new Date("April 5, 2026 08:00:00").getTime();
         setInterval(() => {
-            const d = target - new Date().getTime();
+            const now = new Date().getTime();
+            const d = target - now;
             document.getElementById("days").innerText = Math.max(0, Math.floor(d / 864e5));
             document.getElementById("hours").innerText = Math.max(0, Math.floor((d % 864e5) / 36e5));
             document.getElementById("minutes").innerText = Math.max(0, Math.floor((d % 36e5) / 6e4));
@@ -334,11 +335,11 @@
             const petal = document.createElement('div');
             petal.className = 'petal';
             petal.style.left = Math.random() * 100 + 'vw';
-            petal.style.width = petal.style.height = Math.random() * 8 + 8 + 'px';
+            petal.style.width = petal.style.height = Math.random() * 10 + 10 + 'px';
             petal.style.animationDuration = Math.random() * 3 + 4 + 's';
             document.getElementById('petals').appendChild(petal);
-            setTimeout(() => petal.remove(), 6000);
-        }, 700);
+            setTimeout(() => petal.remove(), 7000);
+        }, 600);
     </script>
 </body>
 </html>
